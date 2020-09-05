@@ -1,0 +1,40 @@
+.requirement-container, .old-system, .new-system{
+    background-color: white;
+    padding: 4px;
+    margin-bottom: 8px;
+    white-space:normal;
+}
+
+.requirement-header{
+    border-bottom: dashed 1px lightgray;
+}
+
+.requirement-content{
+    margin: 4px 0;
+}
+
+
+.drag-handle{
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.drag-handle:active{
+
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.old-system{
+    background-color: #DCEDC8;
+}
+
+.new-system{
+    background-color: #FFE0B2;
+}
+
+.dropdown-menu{
+    background-color: rgba(255,255,255,0.8);
+}

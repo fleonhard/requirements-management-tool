@@ -1,0 +1,33 @@
+<div *ngIf="requirement" class="{{'card requirement-container '+(isOldSystem()?'old-system':'new-system')}}" draggable="true" [dragScope]="'requirement'"  [dragData]="requirement" [dragHandle]="'.drag-handle'">
+
+  <div class="requirement-header">
+    <span *ngIf="requirement.done==1" class="glyphicon glyphicon-ok space-right" style="color: green"></span>
+    <span *ngIf="requirement.watching==1" class="glyphicon glyphicon-eye-open space-right" style="color: blue"></span>
+    <span *ngIf="requirement.banned==1" class="glyphicon glyphicon-ban-circle space-right" style="color: red"></span>
+    <strong>F {{requirement.id}}</strong>
+    <span class="glyphicon glyphicon-move right drag-handle"></span>
+    <span class="glyphicon glyphicon-pencil right space-right pointer" (click)="prepareEditRequirement()" type="button" data-toggle="modal" data-target="#editRequirementModal"></span>
+
+    <div class="dropdown right space-right">
+      <span class="dropdown-toggle glyphicon glyphicon-tag" type="button" data-toggle="dropdown"></span>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="label right" *ngFor="let label of getGroupLabels()" [style.background]="getColorString(label.color)" (click)="addLabelToRequirement(label)">{{label.label}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="labels" style="max-width: 100%">
+    <h6  *ngFor="let label of requirement.labels" class="label" [style.background]="getColorString(label.color)">{{label.label}}
+      <span class="glyphicon space-left pointer" (click)="deleteLabelFromRequirement(label)">&times;</span>
+    </h6>
+  </div>
+  <div class="requirement-content text-center">
+    {{getDescription()}}
+  </div>
+  <div class="requirement-footer text-center">
+    <span class=" left"><span class="glyphicon glyphicon-thumbs-up space-right"></span> {{requirement.votes | number : '.0-2'}}</span>
+    <span class="glyphicon glyphicon-cards space-right"></span>{{requirement.storypoints | number : '.0-2'}}
+    <span class="glyphicon glyphicon-stats space-left space-right"></span>{{requirement.priority | number : '.0-2'}}%
+    <span class="glyphicon glyphicon-flag space-left space-right" style="color: green"></span>{{requirement.result | number : '.0-2'}}%
+    <span class="glyphicon glyphicon-remove right pointer"  (click)="prepareDeleteRequirement()" type="button" data-toggle="modal" data-target="#deleteRequirementModal" style="color: red"></span>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="alert-container text-center">
+  <div class="alerts">
+    <div *ngFor="let alert of getAlerts()">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.group-container{
+    background-color: #E0E0E0;
+    padding: 16px 16px 8px 16px;
+    border-radius: 4px;
+    width: 300px;
+}
+.group-menu-icon{
+    float: right;
+}
+
+.group-content{
+    min-height: 50px;
+}
+
+.group-header{
+    margin-bottom: 16px;
+}
+
+.group-footer{
+    margin-top: 16px;
+}
+
+.group-footer a{
+    color: #757575;
+    text-decoration: none;
+}
+
+.modal{
+    position: absolute;
+}
+
+.group-info{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

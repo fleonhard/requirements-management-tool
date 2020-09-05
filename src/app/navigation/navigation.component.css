@@ -1,0 +1,16 @@
+.navbar-item{
+    margin: 15px;
+}
+
+.navbar-item-title{
+    color: white;
+    display: inline-block;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.dropdown-menu input{
+    margin: 8px 16px ;
+}

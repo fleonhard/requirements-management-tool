@@ -1,0 +1,98 @@
+
+<div *ngIf="group" class="group-container card">
+    <div class="group-header">
+        <div class="group-title">
+            <strong>{{group.label}}</strong>
+
+            <span class="dropdown group-menu-icon">
+                <button class="btn btn-default btn-sm " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="dropdown-toggle group-menu-icon glyphicon glyphicon-option-horizontal"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#createNewRequirementModal" class="pointer" (click)="createNewRequirement()">
+                           <span class="glyphicon glyphicon-plus space-right"></span>Neue Anforderung
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#editLabelForGroupModal" class="pointer" (click)="prepareEditLabels()">
+                           <span class="glyphicon glyphicon-tags space-right"></span>Labels
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#resultGraphModal" class="pointer" (click)="prepareGraphVisualization()">
+                           <span class="glyphicon glyphicon-signal space-right"></span>Ergebnis-Diagram
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a class="pointer" (click)="deleteGroup()">
+                            <span class="glyphicon glyphicon-ban-circle space-right" style="color: red"></span>Gruppe löschen
+                        </a>
+                    </li>
+                </ul>
+            </span>
+
+            <span class="dropdown group-menu-icon">
+                <button class="btn btn-default btn-sm space-right" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="dropdown-toggle group-menu-icon glyphicon glyphicon-sort"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                    <li>
+                        <a class="pointer" (click)="setNoSort()"><span class="glyphicon glyphicon-sort-by-attributes space-right"></span> Keine Sortierung</a>
+                    </li>
+                    <li>
+                        <a class="pointer" (click)="setSortByStoryPoints()"><span class="glyphicon glyphicon-sort-by-attributes space-right"></span> Story-Points</a>
+                    </li>
+                    <li>
+                        <a class="pointer" (click)="setSortByStatus()"><span class="glyphicon glyphicon-sort-by-attributes space-right"></span> Status</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a class="pointer" (click)="setSortByResult()"><span class="glyphicon glyphicon-sort-by-attributes space-right"></span> Gesamt</a>
+                    </li>
+                    <li>
+                        <a class="pointer" (click)="setSortByPriority()"><span class="glyphicon glyphicon-sort-by-attributes space-right"></span> Priorität</a>
+                    </li>
+                    <li>
+                        <a class="pointer" (click)="setSortByVotes()"><span class="glyphicon glyphicon-sort-by-attributes space-right"></span> Votes</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a class="pointer" (click)="setSortById()"><span class="glyphicon glyphicon-sort-by-attributes space-right"></span> Id</a>
+                    </li>
+                </ul>
+            </span>
+
+            <span class="dropdown group-menu-icon">
+                <button class="btn btn-default btn-sm space-right" type="button" (click)="toggleSortDirection()">
+                    <span *ngIf="sortForward" class="group-menu-icon glyphicon glyphicon-sort-by-attributes-alt"></span>
+                    <span *ngIf="!sortForward" class="group-menu-icon glyphicon glyphicon glyphicon-sort-by-attributes"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+
+    <div *ngIf="group.requirements" class="group-info">
+        <span class="space-right"><span class="glyphicon glyphicon-flag space-right" style="color: green"></span>{{getResult() | number : '.0-2'}}%</span>
+        <span class="space-right space-left"><span class="glyphicon glyphicon-cards space-right" style="color: green"></span>{{getStoryPoints() | number : '.0-2'}}</span>
+        <span class="space-right space-left"><span class="glyphicon glyphicon-thumbs-up space-right" style="color: green"></span>{{getVotes() | number : '.0-2'}}</span>
+        <span class="glyphicon glyphicon-duplicate space-right space-left"></span>{{group.requirements.length}}
+    </div>
+
+    <div class="group-content" droppable [dropScope]="'requirement'" [dragOverClass]="'drag-target-border'" (onDrop)="onItemDrop($event)" [attr.data-id]="group.id">
+        <div *ngFor="let req of getRequirements()">
+            <app-requirement [requirement]="req"></app-requirement>
+        </div>
+
+    </div>
+    <div class="group-footer">
+        <button (click)="createNewRequirement()" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createNewRequirementModal">
+            <span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+</div>
+
+
+
+

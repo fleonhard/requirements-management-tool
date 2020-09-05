@@ -1,0 +1,14 @@
+
+
+.btn-wrapper{
+    padding: 2px;
+}
+
+.modal-footer{
+    border-top: none;
+}
+
+.dropdown-menu {
+    min-width:10px;
+    width:50px;
+}

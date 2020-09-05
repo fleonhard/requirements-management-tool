@@ -1,0 +1,42 @@
+.groups, .groups > .vertical-row{
+    min-height: 300px;
+}
+
+.groups > .vertical-row{
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.groups > .vertical-row::-webkit-scrollbar {
+    background-color: #90A4AE;
+    border-radius: 15px;
+}
+.groups > .vertical-row::-webkit-scrollbar-track {
+}
+
+.groups > .vertical-row::-webkit-scrollbar-thumb {
+    background-color: #455A64;
+    outline: 1px solid slategrey;
+    border-radius: 15px;
+}
+
+.groups > .vertical-row > .vertical-item{
+    display: inline-block;
+    float: none;
+    vertical-align: bottom;
+    max-width: 300px;
+    margin: 16px 4px 32px 4px;
+}
+
+.groups > .vertical-row > .vertical-item > .item{
+}
+
+.flip{
+    transform:rotateX(180deg);
+    -ms-transform:rotateX(180deg); /* IE 9 */
+    -webkit-transform:rotateX(180deg); /* Safari and Chrome */
+}
+
+.add-group{
+    vertical-align: top;
+}

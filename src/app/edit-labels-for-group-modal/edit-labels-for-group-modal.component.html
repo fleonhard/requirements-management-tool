@@ -1,0 +1,39 @@
+<div *ngIf="getGroup()" id="editLabelForGroupModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3><span class="glyphicon glyphicon-tags space-right"></span> Labels</h3>
+        <h5>Gruppe: {{getGroup().label}}</h5>
+      </div>
+      <div class="modal-body">
+        <div class="colors">
+            <button *ngFor="let color of colors" class="btn btn-default btn-sm" [style.background]="color" (click)="setSelectedColor(color)"></button>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Name" #labelLabel aria-describedby="addlabelbutton" [style.background]="selectedColor">
+          <span class="input-group-btn" id="addlabelbutton">
+            <button type="button" class="btn btn-primary" (click)="addLabel(labelLabel.value)"><span class="glyphicon glyphicon-plus"></span></button>
+          </span>
+
+        </div>
+        <div class="labels" style="max-width: 100%">
+            <h6  *ngFor="let label of getGroup().labels" class="label" [style.background]="getColorString(label.color)">
+              {{label.label}}
+              <span class="glyphicon space-left pointer" (click)="deleteLabel(label)">&times;</span>
+            </h6>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-wrapper">
+          <button type="button" class="btn btn-success" data-dismiss="modal">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

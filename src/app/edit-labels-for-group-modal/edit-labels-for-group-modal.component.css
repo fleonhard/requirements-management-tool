@@ -1,0 +1,16 @@
+.btn-wrapper{
+    padding: 2px;
+}
+
+.modal-footer{
+    border-top: none;
+}
+
+.color-btn{
+    width: 30px;
+    height: 30px;
+}
+
+.labels{
+    margin-top: 16px;
+}

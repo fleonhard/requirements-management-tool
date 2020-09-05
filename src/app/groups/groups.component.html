@@ -1,0 +1,28 @@
+<div class="groups">
+  <div class="vertical-row flip" id="scrollable">
+
+    <div *ngFor="let group of getGroups()" class="vertical-item flip">
+      <app-group class="item" *ngIf="checkShowGroup(group)" [group]="group"></app-group>
+    </div>
+
+
+    <!--Add Group Start-->
+    <div class="add-group vertical-item flip">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Neue Gruppe hinzufügen..." (keyup.enter)="addGroup(groupNameTv.value)"  #groupNameTv>
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="button" (click)="addGroup(groupNameTv.value)">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+    <!--Add Group End-->
+  </div>
+</div>
+
+<app-new-requirement-modal></app-new-requirement-modal>
+<app-edit-requirement-modal></app-edit-requirement-modal>
+<app-delete-requirement-modal></app-delete-requirement-modal>
+<app-edit-labels-for-group-modal></app-edit-labels-for-group-modal>
+<app-result-graph-modal></app-result-graph-modal>

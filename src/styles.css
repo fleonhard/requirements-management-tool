@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+.pointer{
+    cursor: pointer;
+}
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.label{
+    display: inline-block;
+    color: black;
+    margin: 1px;
+}
+
+.space-right{
+    margin-right: 8px;
+}
+
+.space-left{
+    margin-left: 8px;
+}
+
+.full{
+    width: 100%;
+}
+
+.glyphicon-cards{
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    background-image: url("./assets/cards.svg");
+}

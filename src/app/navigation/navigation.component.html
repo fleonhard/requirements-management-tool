@@ -1,0 +1,171 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="../" class="navbar-brand">LWMRMT</a>
+
+            <div class="navbar-item inline">
+                <input type="text" class="form-control input-sm" aria-label="Text input with dropdown button"
+                       placeholder="Filter" [(ngModel)]="getElements().filterString">
+            </div>
+            <div class="dropdown inline">
+                <button class="btn btn-primary btn-sm navbar-btn  dropdown-toggle" type="button" id="filterMenu"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span
+                        class="glyphicon glyphicon-filter"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="filterMenu">
+                    <li><input type="checkbox" [(ngModel)]="getElements().filterGroups"><span
+                            class="glyphicon glyphicon-filter space-right"></span>Gruppen
+                    </li>
+                    <li><input type="checkbox" [(ngModel)]="getElements().filterDescription"><span
+                            class="glyphicon glyphicon-filter space-right"></span>Texte
+                    </li>
+                    <li><input type="checkbox" [(ngModel)]="getElements().filterId"><span
+                            class="glyphicon glyphicon-filter space-right"></span>Id's
+                    </li>
+                    <li><input type="checkbox" [(ngModel)]="getElements().filterLabels"><span
+                            class="glyphicon glyphicon-filter space-right"></span>Labels
+                    </li>
+                </ul>
+            </div>
+
+            <span class="dropdown group-menu-icon">
+                <button class="btn btn-primary btn-sm navbar-btn space-right" type="button" >
+                    <span *ngIf="sortForward" class="group-menu-icon glyphicon glyphicon-sort-by-attributes-alt"(click)="toggleSortDirection()"></span>
+                    <span *ngIf="!sortForward"
+                          class="group-menu-icon glyphicon glyphicon glyphicon-sort-by-attributes"(click)="toggleSortDirection()"></span>
+                </button>
+            </span>
+            <span class="dropdown group-menu-icon">
+                <button class="btn btn-primary btn-sm space-right navbar-btn" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="dropdown-toggle group-menu-icon glyphicon glyphicon-sort"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                    <li>
+                        <a class="pointer" (click)="setNoSort()"><span
+                                class="glyphicon glyphicon-sort-by-attributes space-right"></span> Keine Sortierung</a>
+                    </li>
+                    <li>
+                        <a class="pointer" (click)="setSortByStoryPoints()"><span
+                                class="glyphicon glyphicon-sort-by-attributes space-right"></span> Story-Points</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a class="pointer" (click)="setSortByResult()"><span
+                                class="glyphicon glyphicon-sort-by-attributes space-right"></span> Gesamt</a>
+                    </li>
+                    <li>
+                        <a class="pointer" (click)="setSortByVotes()"><span
+                                class="glyphicon glyphicon-sort-by-attributes space-right"></span> Votes</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a class="pointer" (click)="setSortByAlphabet()"><span
+                                class="glyphicon glyphicon-sort-by-attributes space-right"></span> Alphabet</a>
+                    </li>
+                </ul>
+            </span>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <!--<li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span class="caret"></span></a>
+                  <ul class="dropdown-menu" aria-labelledby="themes">
+                    <li><a href="../default/">Default</a></li>
+                    <li class="divider"></li>
+                    <li><a href="../cerulean/">Cerulean</a></li>
+                    <li><a href="../cosmo/">Cosmo</a></li>
+                    <li><a href="../cyborg/">Cyborg</a></li>
+                    <li><a href="../darkly/">Darkly</a></li>
+                    <li><a href="../flatly/">Flatly</a></li>
+                    <li><a href="../journal/">Journal</a></li>
+                    <li><a href="../lumen/">Lumen</a></li>
+                    <li><a href="../paper/">Paper</a></li>
+                    <li><a href="../readable/">Readable</a></li>
+                    <li><a href="../sandstone/">Sandstone</a></li>
+                    <li><a href="../simplex/">Simplex</a></li>
+                    <li><a href="../slate/">Slate</a></li>
+                    <li><a href="../solar/">Solar</a></li>
+                    <li><a href="../spacelab/">Spacelab</a></li>
+                    <li><a href="../superhero/">Superhero</a></li>
+                    <li><a href="../united/">United</a></li>
+                    <li><a href="../yeti/">Yeti</a></li>
+                  </ul>
+                </li>-->
+                <!--<li>
+                  <a href="../help/">Help</a>
+                </li>-->
+                <!--<li>
+                  <a href="http://news.bootswatch.com">Blog</a>
+                </li>-->
+                <!--<li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Flatly <span class="caret"></span></a>
+                  <ul class="dropdown-menu" aria-labelledby="download">
+                    <li><a href="http://jsfiddle.net/bootswatch/jmg3gykg/">Open Sandbox</a></li>
+                    <li class="divider"></li>
+                    <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
+                    <li><a href="./bootstrap.css">bootstrap.css</a></li>
+                    <li class="divider"></li>
+                    <li><a href="./variables.less">variables.less</a></li>
+                    <li><a href="./bootswatch.less">bootswatch.less</a></li>
+                    <li class="divider"></li>
+                    <li><a href="./_variables.scss">_variables.scss</a></li>
+                    <li><a href="./_bootswatch.scss">_bootswatch.scss</a></li>
+                  </ul>
+                </li>-->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
+                <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>-->
+
+                <li>
+                    <div class="navbar-item">
+                        <div class="navbar-item-title inline space-right"><span class="glyphicon glyphicon-ok"
+                                                                                style="color: green;"></span></div>
+                        <div class="inline" (click)="toggleShowDone()">
+                            <input type="checkbox" checked data-size="mini" data-toggle="toggle" data-on='anzeigen'
+                                   data-off='verbergen' data-onstyle="success">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="navbar-item">
+                        <div class="navbar-item-title inline space-right"><span class="glyphicon glyphicon-eye-open"
+                                                                                style="color: blue;"></span></div>
+                        <div class="inline" (click)="toggleShowWatching()">
+                            <input type="checkbox" checked data-size="mini" data-toggle="toggle" data-on='anzeigen'
+                                   data-off='verbergen' data-onstyle="success">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="navbar-item">
+                        <div class="navbar-item-title inline space-right"><span class="glyphicon glyphicon-ban-circle"
+                                                                                style="color: red;"></span></div>
+                        <div class="inline" (click)="toggleShowBanned()">
+                            <input type="checkbox" checked data-size="mini" data-toggle="toggle" data-on='anzeigen'
+                                   data-off='verbergen' data-onstyle="success">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="navbar-item">
+                        <div class="navbar-item-title inline space-right">Leere Gruppen</div>
+                        <div class="inline" (click)="toggleShowEmptyGroups()">
+                            <input type="checkbox" checked data-size="mini" data-toggle="toggle" data-on='anzeigen'
+                                   data-off='verbergen' data-onstyle="success">
+                        </div>
+                    </div>
+                </li>
+                <li><a *ngIf="isLoggedIn()" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span></a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</div>
